@@ -1,0 +1,23 @@
+{
+  "name": "tribute-page",
+  "version": "0.0.0",
+  "description": "a tribute to... some guy",
+  "main": "main.js",
+  "repository": "https://github.com/k4y4k/tribute-page",
+  "author": "kayak <kayak@kayak.rocks>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "husky": ">=4",
+    "lint-staged": ">=10",
+    "prettier": "^2.2.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
+  }
+}
