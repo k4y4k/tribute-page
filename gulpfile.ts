@@ -12,8 +12,12 @@ function pug(done: Function): any {
   done()
 }
 
-function css(done: Function): any {
-  const plugins = [autoprefixer()]
+function processCss(done: Function): any {
+  const plugins = [
+    require('postcss-partial-import'),
+    autoprefixer(),
+    require('cssnano')({preset: 'default'}),
+  ]
   gulp
     .src('./src/css/*.css')
     .pipe(postcss(plugins))
@@ -21,4 +25,4 @@ function css(done: Function): any {
   done()
 }
 
-exports.build = gulp.series(pug, css)
+exports.build = gulp.series(pug, processCss)
