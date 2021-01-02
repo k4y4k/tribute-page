@@ -1,17 +1,14 @@
-import {series} from 'gulp'
+import gulp from 'gulp'
 
-// [def]ault
-function def(done) {
-  console.log('this is the default task')
+var gulpPug = require('gulp-pug')
 
-  series(pug)
-  done()
-}
-
-const pug = (done: Function) => {
-  console.log('transpiling Pug to HTML')
+function transpile(done: Function): any {
+  gulp
+    .src('./src/pug/*.pug')
+.pipe(gulpPug({pretty: false, verbose: true}))
+    .pipe(gulp.dest('./dist'))
 
   done()
 }
 
-export default def
+exports.build = gulp.series(transpile)
