@@ -15,11 +15,13 @@ function pug(done: Function): any {
 function processCss(done: Function): any {
   const plugins = [
     require('postcss-partial-import'),
+    require('postcss-uncss')({html: ['./dist/index.html']}),
+
     autoprefixer(),
-    require('cssnano')({preset: 'default'}),
+    require('cssnano')({preset: 'advanced'}),
   ]
   gulp
-    .src('./src/css/*.css')
+    .src('./src/css/main.css')
     .pipe(postcss(plugins))
     .pipe(gulp.dest('./dist/css/'))
   done()
