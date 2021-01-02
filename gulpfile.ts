@@ -1,14 +1,24 @@
 import gulp from 'gulp'
+const gulpPug = require('gulp-pug')
+const postcss = require('gulp-postcss')
+const autoprefixer = require('autoprefixer')
 
-var gulpPug = require('gulp-pug')
-
-function transpile(done: Function): any {
+function pug(done: Function): any {
   gulp
     .src('./src/pug/*.pug')
-.pipe(gulpPug({pretty: false, verbose: true}))
+    .pipe(gulpPug({verbose: true}))
     .pipe(gulp.dest('./dist'))
 
   done()
 }
 
-exports.build = gulp.series(transpile)
+function css(done: Function): any {
+  const plugins = [autoprefixer()]
+  gulp
+    .src('./src/css/*.css')
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest('./dist/css/'))
+  done()
+}
+
+exports.build = gulp.series(pug, css)
