@@ -1,7 +1,7 @@
 import gulp from 'gulp'
 const gulpPug = require('gulp-pug')
 const postcss = require('gulp-postcss')
-const autoprefixer = require('autoprefixer')
+const responsive = require('gulp-responsive')
 
 function pug(done: Function): any {
   gulp
@@ -17,7 +17,7 @@ function processCss(done: Function): any {
     require('postcss-partial-import'),
     require('postcss-uncss')({html: ['./dist/index.html']}),
 
-    autoprefixer(),
+    require('autoprefixer')(),
     require('cssnano')({preset: 'advanced'}),
   ]
   gulp
@@ -27,4 +27,22 @@ function processCss(done: Function): any {
   done()
 }
 
-exports.build = gulp.series(pug, processCss)
+function img(done: Function): any {
+  console.log('images')
+
+  gulp
+    .src('./src/img/*.{png,jpg}')
+    .pipe(
+      responsive({
+        'header.png': [
+          {format: 'webp', height: 750},
+          {format: 'png', height: 750},
+        ],
+      })
+    )
+    .pipe(gulp.dest('./dist/img/'))
+
+  done()
+}
+
+exports.build = gulp.series(pug, processCss, img)
