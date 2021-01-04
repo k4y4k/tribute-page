@@ -2,6 +2,7 @@ import gulp from 'gulp'
 const gulpPug = require('gulp-pug')
 const postcss = require('gulp-postcss')
 const responsive = require('gulp-responsive')
+const ts = require('gulp-typescript')
 
 function pug(done: Function): any {
   gulp
@@ -16,7 +17,6 @@ function processCss(done: Function): any {
   const plugins = [
     require('postcss-partial-import'),
     require('postcss-uncss')({html: ['./dist/index.html']}),
-
     require('autoprefixer')(),
     require('cssnano')({preset: 'advanced'}),
   ]
@@ -28,8 +28,6 @@ function processCss(done: Function): any {
 }
 
 function img(done: Function): any {
-  console.log('images')
-
   gulp
     .src('./src/img/*.{png,jpg}')
     .pipe(
@@ -45,4 +43,17 @@ function img(done: Function): any {
   done()
 }
 
-exports.build = gulp.series(pug, processCss, img)
+function js(done: Function): any {
+  console.log('typescript')
+
+  gulp
+    .src('./src/ts/*.ts')
+    .pipe(ts({noImplicitAny: true, outFile: 'main.js'}))
+    .pipe(gulp.dest('./dist/js/'))
+
+  done()
+}
+
+console.log(img, js)
+
+exports.build = gulp.series(pug, processCss, img, js)

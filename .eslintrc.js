@@ -13,6 +13,6 @@ module.exports = {
     // note you must disable the base rule as it can report incorrect errors
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': ['error'],
-    '@typescript-eslint/no-var-requires': off,
+    '@typescript-eslint/no-var-requires': 'off',
   },
 }
