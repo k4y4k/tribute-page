@@ -8,6 +8,7 @@ before_script:
 
 script:
   - gulp build
+  - rm -rf src/
 
 deploy:
   provider: pages
