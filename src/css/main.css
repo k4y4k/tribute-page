@@ -33,7 +33,20 @@ main {
 
 #title {
   grid-area: title;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 7vh;
+}
+
+#title img {
+  max-height: 100px;
+  align-self: end;
+  margin-top: auto;
+}
+
+#title-text {
   text-align: center;
+  margin: 0 3rem;
 }
 
 #img-div {

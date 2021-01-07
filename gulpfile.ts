@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment */
+
 import gulp from 'gulp'
 const gulpPug = require('gulp-pug')
 const postcss = require('gulp-postcss')
@@ -36,6 +38,12 @@ function img(done: Function): any {
           {format: 'webp', height: 750},
           {format: 'png', height: 750},
         ],
+        'title-decoration.png': [
+          {format: 'webp', rename: 'td-l.webp'},
+          {format: 'png', rename: 'td-l.png'},
+          {format: 'webp', rename: 'td-r.webp', flop: true},
+          {format: 'png', rename: 'td-r.png', flop: true},
+        ],
       })
     )
     .pipe(gulp.dest('./dist/img/'))
@@ -56,4 +64,8 @@ function js(done: Function): any {
 
 console.log(img, js)
 
-exports.build = gulp.series(pug, processCss, img, js)
+exports.build = gulp.series(
+  pug,
+  processCss
+  // img, js
+)
