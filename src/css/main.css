@@ -1,8 +1,8 @@
 @import './reset.css';
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Lato:ital@0;1&display=swap');
 
 html {
-  --body-bg-colour: #383d39;
+  --body-bg-colour: #1c1c1c;
   --body-text-colour: #f4f6f6;
   --body-accent-colour: #22d07f;
 }
@@ -18,18 +18,30 @@ body {
 }
 
 main {
-  padding: 3rem;
-  max-width: 900px;
-  width: 100vw;
-  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.grid-parent {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: 1fr min-content;
+  grid-template-areas:
+    'art text'
+    'footer footer';
+}
+
+.art {
+  padding: 2rem;
+  text-align: center;
 }
 
 #image {
   display: block;
   margin: 0 auto;
-  max-height: 750px;
-  max-width: 750px;
-  width: 50vh;
+}
+
+.text {
+  padding: 2rem;
 }
 
 p {
@@ -53,7 +65,7 @@ h3 {
 h1,
 h2,
 h3 {
-  font-family: 'Abril Fatface', cursive;
+  font-family: 'Playfair Display', cursive;
   margin-bottom: 3rem;
   line-height: 6rem;
   color: var(--body-accent-colour);
