@@ -62,10 +62,4 @@ function js(done: Function): any {
   done()
 }
 
-console.log(img, js)
-
-exports.build = gulp.series(
-  pug,
-  processCss
-  // img, js
-)
+exports.build = gulp.series(pug, processCss, img, js)
