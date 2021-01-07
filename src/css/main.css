@@ -11,6 +11,9 @@ body {
 
 main {
   padding: 3rem;
+  max-width: 900px;
+  width: 100vw;
+  margin: 0 auto;
 }
 
 #image {
@@ -83,4 +86,8 @@ footer a {
 
 footer a:visited {
   color: #22d07f;
+}
+
+.nogap {
+  margin-bottom: 0;
 }
