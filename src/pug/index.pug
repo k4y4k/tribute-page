@@ -9,9 +9,11 @@ body
         h1.nogap The Postmasters
         h2.nogap A Short Guide For The Uninitiated
       img(srcset="img/td-r.webp, img/td-r.png", src="img/td-r.png" alt="")
-    #img-div
-      img#image(srcset="img/header.webp, img/header.png" src="img/header.png" alt="An illustration of two figures.")
-      figcaption#img-caption Left: Cecillian Whyttaker-Myne; Right: Alessander Tel
+    //- this "extra" div is here for sticky purposes
+    div
+      #img-div
+        img#image(srcset="img/header.webp, img/header.png" src="img/header.png" alt="An illustration of two figures.")
+        figcaption#img-caption Left: Cecillian Whyttaker-Myne; Right: Alessander Tel
     #tribute-info
       p The Postmasters run the #[em Post Office of the Dead], a facility that processes last wishes and lingering regrets for the peoples of the Undāin faith. They also pass messages from the dead to the living, and vice versa.
       p Moreover, the Postmasters oversee the #[em Guild of Seven Ghosts,] a group of spirits hand-selected for their raw strength of will (a useful trait to have when your minority pagan religion is constantly ignored). The Guild handle items that can't be automatically delivered by the regular Post Office workforce, such as particularly emotional messages, or volatile items requiring a delicate touch.
@@ -27,4 +29,4 @@ body
     p
       small JSYK, #[a#tribute-link(href="https://en.wikipedia.org/wiki/Creative_writing" target="_blank") this is a work of fiction.] Names, characters, places, and events are the product of my imagination. Any resemblance to actual persons, living or dead, or actual events is purely coincidental.
     script(type="text/javascript" src="js/main.js")
-    //- script(type='text/javascript' src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js")
+    script(type='text/javascript' src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js")

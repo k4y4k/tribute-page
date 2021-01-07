@@ -23,6 +23,7 @@ main {
 
 .grid-parent {
   display: grid;
+  column-gap: 3rem;
   grid-template-columns: 2fr 3fr;
   grid-template-rows: min-content 1fr min-content;
   grid-template-areas:
@@ -51,10 +52,22 @@ main {
 
 #img-div {
   grid-area: art;
+  position: sticky;
+  top: 0px;
+}
+
+#img-div img {
+  display: block;
+  margin: 0 auto;
 }
 
 #tribute-info {
   grid-area: text;
+}
+
+#img-div,
+#tribute-info {
+  padding: 2rem;
 }
 
 p {
