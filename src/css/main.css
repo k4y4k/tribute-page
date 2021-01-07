@@ -59,6 +59,9 @@ main {
 #img-div img {
   display: block;
   margin: 0 auto;
+  width: 50vw;
+  max-width: 475px;
+  max-height: 90vh;
 }
 
 #tribute-info {
