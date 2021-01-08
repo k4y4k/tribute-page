@@ -1,6 +1,4 @@
-# The Postmasters
-
-## A Short Guide for the Uninitiated
+# The Postmasters: A Short Guide for the Uninitiated
 
 ![Travis (.com)](https://img.shields.io/travis/com/k4y4k/tribute-page?logo=travis&logoColor=white&style=for-the-badge)
 ![uses typescript](https://img.shields.io/static/v1?label=uses&message=typescript&color=blue&logo=typescript&logoColor=white&style=for-the-badge)
@@ -10,6 +8,7 @@
 
 Adheres to JavaScript Standard Style (with TypeScript).
 Formatted with Prettier.
+Tested according to [FreeCodeCamp's spec](https://www.freecodecamp.org/learn/responsive-web-design/responsive-web-design-projects/build-a-tribute-page).
 
 [Deployed to a custom domain with GitHub Pages](https://tribute-page.kayak.rocks).
 
