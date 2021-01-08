@@ -24,7 +24,7 @@
     "gulp-minify": "^3.1.0",
     "gulp-postcss": "9.0.0",
     "gulp-responsive": "3.0.1",
-    "husky": "4.3.6",
+    "husky": "4.3.7",
     "lint-staged": "10.5.3",
     "postcss": "8.2.2",
     "postcss-uncss": "0.17.0",
