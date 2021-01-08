@@ -68,7 +68,8 @@ body {
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1000px) {
+/* gh#35: bail out of the alternate sizing earlier due to weird stretching */
+@media screen and (max-width: 750px) {
   #img-div img {
     /* gh#29: image will squish on ratios like landscape phone */
     /* use vw because we used vh before */
