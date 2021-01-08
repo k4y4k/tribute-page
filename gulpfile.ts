@@ -38,12 +38,6 @@ function img(done: Function): any {
           {format: 'webp', height: 750},
           {format: 'png', height: 750},
         ],
-        'title-decoration.png': [
-          {format: 'webp', rename: 'td-l.webp'},
-          {format: 'png', rename: 'td-l.png'},
-          {format: 'webp', rename: 'td-r.webp', flop: true},
-          {format: 'png', rename: 'td-r.png', flop: true},
-        ],
       })
     )
     .pipe(gulp.dest('./dist/img/'))
