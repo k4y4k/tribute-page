@@ -72,6 +72,8 @@ body {
   grid-area: text;
   box-sizing: border-box;
   padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 p {
