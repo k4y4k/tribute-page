@@ -22,7 +22,7 @@ body {
   row-gap: 1.5rem;
   column-gap: 3rem;
   grid-template-columns: 2fr 3fr;
-  grid-template-rows: min-content 1fr 1fr min-content;
+  grid-template-rows: min-content 1fr min-content min-content;
   grid-template-areas:
     'title title'
     'art text'
@@ -50,7 +50,7 @@ body {
 #img-div {
   grid-area: art;
   position: sticky;
-  top: 0px;
+  top: 15px;
   width: 100%;
 }
 
