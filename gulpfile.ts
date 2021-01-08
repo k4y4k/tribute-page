@@ -49,6 +49,7 @@ function js(done: Function): any {
   gulp
     .src('./src/ts/*.ts')
     .pipe(ts({noImplicitAny: true, outFile: 'main.js'}))
+    .pipe(require('gulp-minify')({noSource: true}))
     .pipe(gulp.dest('./dist/js/'))
 
   done()
