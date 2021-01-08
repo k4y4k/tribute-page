@@ -46,8 +46,6 @@ function img(done: Function): any {
 }
 
 function js(done: Function): any {
-  console.log('typescript')
-
   gulp
     .src('./src/ts/*.ts')
     .pipe(ts({noImplicitAny: true, outFile: 'main.js'}))
@@ -56,4 +54,10 @@ function js(done: Function): any {
   done()
 }
 
-exports.build = gulp.series(pug, processCss, img, js)
+function meta(done: Function): any {
+  gulp.src('./src/meta/*').pipe(gulp.dest('./dist'))
+
+  done()
+}
+
+exports.build = gulp.series(meta, pug, processCss, img, js)
