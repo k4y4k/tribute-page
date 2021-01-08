@@ -17,6 +17,17 @@ body {
   color: var(--body-text-colour);
 }
 
+/* gh#33: push footer to the bottom of the screen even on very large displays */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 2 0 auto;
+}
+
 .grid-parent {
   display: grid;
   row-gap: 1.5rem;
