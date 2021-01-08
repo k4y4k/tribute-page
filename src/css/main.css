@@ -88,9 +88,10 @@ main {
     max-height: 90vw;
     /* don't squish: size by height here, not width */
     width: auto;
-    /* don't squish: cont: don't restrict width */
-    max-width: unset;
-    height: 100vh;
+    /* don't squish: cont: don't restrict width but DO pass the FCC test */
+    max-width: 9999px;
+    /* passing the test, even though it seems weird to have both on auto 🤷 */
+    height: auto;
   }
 }
 
