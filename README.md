@@ -8,6 +8,7 @@
 
 Adheres to JavaScript Standard Style (with TypeScript).
 Formatted with Prettier.
+Maintained with renovate-bot.
 Tested according to [FreeCodeCamp's spec](https://www.freecodecamp.org/learn/responsive-web-design/responsive-web-design-projects/build-a-tribute-page).
 
 [Deployed to a custom domain with GitHub Pages](https://tribute-page.kayak.rocks).
