@@ -88,6 +88,8 @@ main {
     max-height: 90vw;
     /* don't squish: size by height here, not width */
     width: auto;
+    /* don't squish: cont: don't restrict width */
+    max-width: unset;
     height: 100vh;
   }
 }
