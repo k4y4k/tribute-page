@@ -74,10 +74,10 @@ main {
 
 #img-div img {
   display: block;
-  width: 50vw;
-  max-width: 475px;
-  max-height: 90vh;
   margin: 0 auto;
+  padding: 1rem;
+  width: 100%;
+  max-width: 33vw;
 }
 
 /* gh#35: bail out of the alternate sizing earlier due to weird stretching */
@@ -89,6 +89,12 @@ main {
     /* don't squish: size by height here, not width */
     width: auto;
     height: 100vh;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  #img-div img {
+    max-width: 27.5vw;
   }
 }
 
