@@ -1,3 +1,2 @@
-const headerImg = <HTMLImageElement>document.querySelector('#image')
-
-if (headerImg.currentSrc.includes('webp')) console.log('✅')
+if (process.env.NODE_ENV === 'development')
+  console.log('TypeScript compiled to JavaScript.')

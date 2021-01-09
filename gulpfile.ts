@@ -4,7 +4,7 @@ import gulp from 'gulp'
 const gulpPug = require('gulp-pug')
 const postcss = require('gulp-postcss')
 const responsive = require('gulp-responsive')
-const ts = require('gulp-typescript')
+const webpack = require('webpack-stream')
 
 function pug(done: Function): any {
   gulp
@@ -45,11 +45,10 @@ function img(done: Function): any {
   done()
 }
 
-function js(done: Function): any {
+function tsToJs(done: Function): any {
   gulp
-    .src('./src/ts/*.ts')
-    .pipe(ts({noImplicitAny: true, outFile: 'main.js'}))
-    .pipe(require('gulp-minify')({noSource: true}))
+    .src('./src/ts/main.ts')
+    .pipe(webpack(require('./webpack.config.ts')))
     .pipe(gulp.dest('./dist/js/'))
 
   done()
@@ -61,4 +60,4 @@ function meta(done: Function): any {
   done()
 }
 
-exports.build = gulp.series(meta, pug, processCss, img, js)
+exports.build = gulp.series(meta, pug, processCss, img, tsToJs)
