@@ -53,6 +53,7 @@
     "cssnano": "4.1.10",
     "gulp-pug": "4.0.1",
     "gulp-typescript": "6.0.0-alpha.1",
+    "pixi.js": "^5.3.7",
     "postcss-partial-import": "4.1.0",
     "pug": "2.0.4"
   },
