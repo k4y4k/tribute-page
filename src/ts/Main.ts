@@ -3,7 +3,7 @@ import {Preloader} from './Preloader'
 import {HelloDragonBones} from './HelloDragonBones'
 
 export class Main extends Container {
-  private preloader: Preloader
+  private readonly preloader: Preloader
   private currentDemo: Container
   constructor() {
     super()
@@ -11,17 +11,11 @@ export class Main extends Container {
     this.addChild(this.preloader)
   }
 
+  // we only have the one animation for now
   private onAssetsLoaded() {
     this.removeChild(this.preloader)
     this.preloader.destroy({children: true})
 
-    this.currentDemo = new HelloDragonBones()
-    this.addChild(this.currentDemo)
-  }
-
-  public helloDragonBones() {
-    this.removeChild(this.currentDemo)
-    this.currentDemo.destroy({children: true})
     this.currentDemo = new HelloDragonBones()
     this.addChild(this.currentDemo)
   }

@@ -8,12 +8,8 @@ export class Preloader extends Container {
   private preloader: Loader
 
   private allDragonBonesFiles = [
-    // for BaseDemo
-    'assets/dragon/background.png',
-
     // for HelloDragonBones
     'assets/dragon/mecha_1002_101d_show/mecha_1002_101d_show_ske.json',
-    'assets/dragon/mecha_1002_101d_show/mecha_1002_101d_show_ske.dbbin',
     'assets/dragon/mecha_1002_101d_show/mecha_1002_101d_show_tex.json',
     'assets/dragon/mecha_1002_101d_show/mecha_1002_101d_show_tex.png',
   ]
@@ -42,7 +38,7 @@ export class Preloader extends Container {
   }
 
   protected buildPreloader(): void {
-    console.log('loaded')
+    console.log('preloader loaded')
     const factory = dragonBones.PixiFactory.factory
     factory.parseDragonBonesData(
       this.preloader.resources[
@@ -68,6 +64,7 @@ export class Preloader extends Container {
     this._armatureDisplay.y = HEIGHT / 2
 
     // Preloader built. Loading real assets...
+    console.log('loading assets')
     Loader.shared.add(this.allDragonBonesFiles)
     const detach = Loader.shared.onProgress.add(this.onProgress, this)
     Loader.shared.onComplete.once(() => {

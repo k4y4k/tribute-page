@@ -26,9 +26,6 @@ export class HelloDragonBones extends BaseDemo {
 
     const factory = dragonBones.PixiFactory.factory
 
-    console.log(factory.parseDragonBonesData(this))
-    console.log(this)
-
     factory.parseDragonBonesData(
       Loader.shared.resources[
         'assets/dragon/mecha_1002_101d_show/mecha_1002_101d_show_ske.json'
@@ -48,7 +45,9 @@ export class HelloDragonBones extends BaseDemo {
       'mecha_1002_101d',
       'mecha_1002_101d_show'
     )
+
     armatureDisplay.animation.play('idle')
+    armatureDisplay.debugDraw = true
 
     armatureDisplay.x = 0.0
     armatureDisplay.y = 200.0
