@@ -47,7 +47,7 @@ function img(done: Function): any {
 
 function tsToJs(done: Function): any {
   gulp
-    .src('./src/ts/main.ts')
+    .src('./src/ts/index.ts')
     .pipe(webpack(require('./webpack.config.ts')))
     .pipe(gulp.dest('./dist/js/'))
 
@@ -60,4 +60,9 @@ function meta(done: Function): any {
   done()
 }
 
-exports.build = gulp.series(meta, pug, processCss, img, tsToJs)
+function animAssets(done: Function): any {
+  gulp.src('./src/anim/assets/**/*.*').pipe(gulp.dest('./dist/assets/'))
+  done()
+}
+
+exports.build = gulp.series(meta, pug, processCss, img, animAssets, tsToJs)

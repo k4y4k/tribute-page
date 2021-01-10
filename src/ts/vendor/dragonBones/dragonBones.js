@@ -2,15 +2,18 @@
 var __extends =
   (this && this.__extends) ||
   (function () {
-    var extendStatics =
-      Object.setPrototypeOf ||
-      ({__proto__: []} instanceof Array &&
+    var extendStatics = function (d, b) {
+      extendStatics =
+        Object.setPrototypeOf ||
+        ({__proto__: []} instanceof Array &&
+          function (d, b) {
+            d.__proto__ = b
+          }) ||
         function (d, b) {
-          d.__proto__ = b
-        }) ||
-      function (d, b) {
-        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]
-      }
+          for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]
+        }
+      return extendStatics(d, b)
+    }
     return function (d, b) {
       extendStatics(d, b)
       function __() {
@@ -18280,4 +18283,1067 @@ var dragonBones
     return BuildArmaturePackage
   })()
   dragonBones.BuildArmaturePackage = BuildArmaturePackage
+})(dragonBones || (dragonBones = {}))
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2012-2018 DragonBones team and other contributors
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+var dragonBones
+;(function (dragonBones) {
+  /**
+   * - The PixiJS texture atlas data.
+   * @version DragonBones 3.0
+   * @language en_US
+   */
+  /**
+   * - PixiJS 贴图集数据。
+   * @version DragonBones 3.0
+   * @language zh_CN
+   */
+  var PixiTextureAtlasData = /** @class */ (function (_super) {
+    __extends(PixiTextureAtlasData, _super)
+    function PixiTextureAtlasData() {
+      var _this = (_super !== null && _super.apply(this, arguments)) || this
+      _this._renderTexture = null // Initial value.
+      return _this
+    }
+    PixiTextureAtlasData.toString = function () {
+      return '[class dragonBones.PixiTextureAtlasData]'
+    }
+    PixiTextureAtlasData.prototype._onClear = function () {
+      _super.prototype._onClear.call(this)
+      if (this._renderTexture !== null) {
+        // this._renderTexture.dispose();
+      }
+      this._renderTexture = null
+    }
+    /**
+     * @inheritDoc
+     */
+    PixiTextureAtlasData.prototype.createTexture = function () {
+      return dragonBones.BaseObject.borrowObject(PixiTextureData)
+    }
+    Object.defineProperty(PixiTextureAtlasData.prototype, 'renderTexture', {
+      /**
+       * - The PixiJS texture.
+       * @version DragonBones 3.0
+       * @language en_US
+       */
+      /**
+       * - PixiJS 贴图。
+       * @version DragonBones 3.0
+       * @language zh_CN
+       */
+      get: function () {
+        return this._renderTexture
+      },
+      set: function (value) {
+        if (this._renderTexture === value) {
+          return
+        }
+        this._renderTexture = value
+        if (this._renderTexture !== null) {
+          for (var k in this.textures) {
+            var textureData = this.textures[k]
+            textureData.renderTexture = new PIXI.Texture(
+              this._renderTexture,
+              new PIXI.Rectangle(
+                textureData.region.x,
+                textureData.region.y,
+                textureData.region.width,
+                textureData.region.height
+              ),
+              new PIXI.Rectangle(
+                textureData.region.x,
+                textureData.region.y,
+                textureData.region.width,
+                textureData.region.height
+              ),
+              new PIXI.Rectangle(
+                0,
+                0,
+                textureData.region.width,
+                textureData.region.height
+              ),
+              textureData.rotated // .d.ts bug
+            )
+          }
+        } else {
+          for (var k in this.textures) {
+            var textureData = this.textures[k]
+            textureData.renderTexture = null
+          }
+        }
+      },
+      enumerable: true,
+      configurable: true,
+    })
+    return PixiTextureAtlasData
+  })(dragonBones.TextureAtlasData)
+  dragonBones.PixiTextureAtlasData = PixiTextureAtlasData
+  /**
+   * @internal
+   */
+  var PixiTextureData = /** @class */ (function (_super) {
+    __extends(PixiTextureData, _super)
+    function PixiTextureData() {
+      var _this = (_super !== null && _super.apply(this, arguments)) || this
+      _this.renderTexture = null // Initial value.
+      return _this
+    }
+    PixiTextureData.toString = function () {
+      return '[class dragonBones.PixiTextureData]'
+    }
+    PixiTextureData.prototype._onClear = function () {
+      _super.prototype._onClear.call(this)
+      if (this.renderTexture !== null) {
+        this.renderTexture.destroy(false)
+      }
+      this.renderTexture = null
+    }
+    return PixiTextureData
+  })(dragonBones.TextureData)
+  dragonBones.PixiTextureData = PixiTextureData
+})(dragonBones || (dragonBones = {}))
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2012-2018 DragonBones team and other contributors
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+var dragonBones
+;(function (dragonBones) {
+  /**
+   * @inheritDoc
+   */
+  var PixiArmatureDisplay = /** @class */ (function (_super) {
+    __extends(PixiArmatureDisplay, _super)
+    function PixiArmatureDisplay() {
+      var _this = (_super !== null && _super.apply(this, arguments)) || this
+      /**
+       * @private
+       */
+      _this.debugDraw = false
+      _this._debugDraw = false
+      // private _disposeProxy: boolean = false;
+      _this._armature = null
+      _this._debugDrawer = null
+      return _this
+    }
+    /**
+     * @inheritDoc
+     */
+    PixiArmatureDisplay.prototype.dbInit = function (armature) {
+      this._armature = armature
+    }
+    /**
+     * @inheritDoc
+     */
+    PixiArmatureDisplay.prototype.dbClear = function () {
+      if (this._debugDrawer !== null) {
+        this._debugDrawer.destroy({
+          children: true,
+          texture: true,
+          baseTexture: true,
+        })
+      }
+      this._armature = null
+      this._debugDrawer = null
+      _super.prototype.destroy.call(this)
+    }
+    /**
+     * @inheritDoc
+     */
+    PixiArmatureDisplay.prototype.dbUpdate = function () {
+      var drawed = dragonBones.DragonBones.debugDraw || this.debugDraw
+      if (drawed || this._debugDraw) {
+        this._debugDraw = drawed
+        if (this._debugDraw) {
+          if (this._debugDrawer === null) {
+            this._debugDrawer = new PIXI.Sprite(PIXI.Texture.EMPTY)
+            var boneDrawer_1 = new PIXI.Graphics()
+            this._debugDrawer.addChild(boneDrawer_1)
+          }
+          this.addChild(this._debugDrawer)
+          var boneDrawer = this._debugDrawer.getChildAt(0)
+          boneDrawer.clear()
+          var bones = this._armature.getBones()
+          for (var i = 0, l = bones.length; i < l; ++i) {
+            var bone = bones[i]
+            var boneLength = bone.boneData.length
+            var startX = bone.globalTransformMatrix.tx
+            var startY = bone.globalTransformMatrix.ty
+            var endX = startX + bone.globalTransformMatrix.a * boneLength
+            var endY = startY + bone.globalTransformMatrix.b * boneLength
+            boneDrawer.lineStyle(2.0, 0x00ffff, 0.7)
+            boneDrawer.moveTo(startX, startY)
+            boneDrawer.lineTo(endX, endY)
+            boneDrawer.lineStyle(0.0, 0, 0.0)
+            boneDrawer.beginFill(0x00ffff, 0.7)
+            boneDrawer.drawCircle(startX, startY, 3.0)
+            boneDrawer.endFill()
+          }
+          var slots = this._armature.getSlots()
+          for (var i = 0, l = slots.length; i < l; ++i) {
+            var slot = slots[i]
+            var boundingBoxData = slot.boundingBoxData
+            if (boundingBoxData) {
+              var child = this._debugDrawer.getChildByName(slot.name)
+              if (!child) {
+                child = new PIXI.Graphics()
+                child.name = slot.name
+                this._debugDrawer.addChild(child)
+              }
+              child.clear()
+              child.lineStyle(2.0, 0xff00ff, 0.7)
+              switch (boundingBoxData.type) {
+                case 0 /* Rectangle */:
+                  child.drawRect(
+                    -boundingBoxData.width * 0.5,
+                    -boundingBoxData.height * 0.5,
+                    boundingBoxData.width,
+                    boundingBoxData.height
+                  )
+                  break
+                case 1 /* Ellipse */:
+                  child.drawEllipse(
+                    -boundingBoxData.width * 0.5,
+                    -boundingBoxData.height * 0.5,
+                    boundingBoxData.width,
+                    boundingBoxData.height
+                  )
+                  break
+                case 2 /* Polygon */:
+                  var vertices = boundingBoxData.vertices
+                  for (
+                    var i_4 = 0, l_1 = vertices.length;
+                    i_4 < l_1;
+                    i_4 += 2
+                  ) {
+                    var x = vertices[i_4]
+                    var y = vertices[i_4 + 1]
+                    if (i_4 === 0) {
+                      child.moveTo(x, y)
+                    } else {
+                      child.lineTo(x, y)
+                    }
+                  }
+                  child.lineTo(vertices[0], vertices[1])
+                  break
+                default:
+                  break
+              }
+              child.endFill()
+              slot.updateTransformAndMatrix()
+              slot.updateGlobalTransform()
+              var transform = slot.global
+              child.setTransform(
+                transform.x,
+                transform.y,
+                transform.scaleX,
+                transform.scaleY,
+                transform.rotation,
+                transform.skew,
+                0.0,
+                slot._pivotX,
+                slot._pivotY
+              )
+            } else {
+              var child = this._debugDrawer.getChildByName(slot.name)
+              if (child) {
+                this._debugDrawer.removeChild(child)
+              }
+            }
+          }
+        } else if (
+          this._debugDrawer !== null &&
+          this._debugDrawer.parent === this
+        ) {
+          this.removeChild(this._debugDrawer)
+        }
+      }
+    }
+    /**
+     * @inheritDoc
+     */
+    PixiArmatureDisplay.prototype.dispose = function (disposeProxy) {
+      if (disposeProxy === void 0) {
+        disposeProxy = true
+      }
+      // tslint:disable-next-line:no-unused-expression
+      disposeProxy
+      if (this._armature !== null) {
+        this._armature.dispose()
+        this._armature = null
+      }
+    }
+    /**
+     * @inheritDoc
+     */
+    PixiArmatureDisplay.prototype.destroy = function () {
+      this.dispose()
+    }
+    /**
+     * @private
+     */
+    PixiArmatureDisplay.prototype.dispatchDBEvent = function (
+      type,
+      eventObject
+    ) {
+      this.emit(type, eventObject)
+    }
+    /**
+     * @inheritDoc
+     */
+    PixiArmatureDisplay.prototype.hasDBEventListener = function (type) {
+      return this.listenerCount(type) > 0
+    }
+    /**
+     * @inheritDoc
+     */
+    PixiArmatureDisplay.prototype.addDBEventListener = function (
+      type,
+      listener,
+      target
+    ) {
+      this.addListener(type, listener, target)
+    }
+    /**
+     * @inheritDoc
+     */
+    PixiArmatureDisplay.prototype.removeDBEventListener = function (
+      type,
+      listener,
+      target
+    ) {
+      this.removeListener(type, listener, target)
+    }
+    Object.defineProperty(PixiArmatureDisplay.prototype, 'armature', {
+      /**
+       * @inheritDoc
+       */
+      get: function () {
+        return this._armature
+      },
+      enumerable: true,
+      configurable: true,
+    })
+    Object.defineProperty(PixiArmatureDisplay.prototype, 'animation', {
+      /**
+       * @inheritDoc
+       */
+      get: function () {
+        return this._armature.animation
+      },
+      enumerable: true,
+      configurable: true,
+    })
+    return PixiArmatureDisplay
+  })(PIXI.Sprite)
+  dragonBones.PixiArmatureDisplay = PixiArmatureDisplay
+})(dragonBones || (dragonBones = {}))
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2012-2018 DragonBones team and other contributors
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+var dragonBones
+;(function (dragonBones) {
+  /**
+   * - The PixiJS slot.
+   * @version DragonBones 3.0
+   * @language en_US
+   */
+  /**
+   * - PixiJS 插槽。
+   * @version DragonBones 3.0
+   * @language zh_CN
+   */
+  var PixiSlot = /** @class */ (function (_super) {
+    __extends(PixiSlot, _super)
+    function PixiSlot() {
+      return (_super !== null && _super.apply(this, arguments)) || this
+    }
+    PixiSlot.toString = function () {
+      return '[class dragonBones.PixiSlot]'
+    }
+    PixiSlot.prototype._onClear = function () {
+      _super.prototype._onClear.call(this)
+      this._textureScale = 1.0
+      this._renderDisplay = null
+      this._updateTransform =
+        PIXI.VERSION[0] === '3'
+          ? this._updateTransformV3
+          : this._updateTransformV4
+    }
+    PixiSlot.prototype._initDisplay = function (value, isRetain) {
+      // tslint:disable-next-line:no-unused-expression
+      value
+      // tslint:disable-next-line:no-unused-expression
+      isRetain
+    }
+    PixiSlot.prototype._disposeDisplay = function (value, isRelease) {
+      // tslint:disable-next-line:no-unused-expression
+      value
+      if (!isRelease) {
+        value.destroy()
+      }
+    }
+    PixiSlot.prototype._onUpdateDisplay = function () {
+      this._renderDisplay = this._display ? this._display : this._rawDisplay
+    }
+    PixiSlot.prototype._addDisplay = function () {
+      var container = this._armature.display
+      container.addChild(this._renderDisplay)
+    }
+    PixiSlot.prototype._replaceDisplay = function (value) {
+      var container = this._armature.display
+      var prevDisplay = value
+      container.addChild(this._renderDisplay)
+      container.swapChildren(this._renderDisplay, prevDisplay)
+      container.removeChild(prevDisplay)
+      this._textureScale = 1.0
+    }
+    PixiSlot.prototype._removeDisplay = function () {
+      this._renderDisplay.parent.removeChild(this._renderDisplay)
+    }
+    PixiSlot.prototype._updateZOrder = function () {
+      var container = this._armature.display
+      var index = container.getChildIndex(this._renderDisplay)
+      if (index === this._zOrder) {
+        return
+      }
+      container.addChildAt(this._renderDisplay, this._zOrder)
+    }
+    /**
+     * @internal
+     */
+    PixiSlot.prototype._updateVisible = function () {
+      this._renderDisplay.visible = this._parent.visible && this._visible
+    }
+    PixiSlot.prototype._updateBlendMode = function () {
+      if (this._renderDisplay instanceof PIXI.Sprite) {
+        switch (this._blendMode) {
+          case 0 /* Normal */:
+            this._renderDisplay.blendMode = PIXI.BLEND_MODES.NORMAL
+            break
+          case 1 /* Add */:
+            this._renderDisplay.blendMode = PIXI.BLEND_MODES.ADD
+            break
+          case 3 /* Darken */:
+            this._renderDisplay.blendMode = PIXI.BLEND_MODES.DARKEN
+            break
+          case 4 /* Difference */:
+            this._renderDisplay.blendMode = PIXI.BLEND_MODES.DIFFERENCE
+            break
+          case 6 /* HardLight */:
+            this._renderDisplay.blendMode = PIXI.BLEND_MODES.HARD_LIGHT
+            break
+          case 9 /* Lighten */:
+            this._renderDisplay.blendMode = PIXI.BLEND_MODES.LIGHTEN
+            break
+          case 10 /* Multiply */:
+            this._renderDisplay.blendMode = PIXI.BLEND_MODES.MULTIPLY
+            break
+          case 11 /* Overlay */:
+            this._renderDisplay.blendMode = PIXI.BLEND_MODES.OVERLAY
+            break
+          case 12 /* Screen */:
+            this._renderDisplay.blendMode = PIXI.BLEND_MODES.SCREEN
+            break
+          default:
+            break
+        }
+      }
+      // TODO child armature.
+    }
+    PixiSlot.prototype._updateColor = function () {
+      var alpha = this._colorTransform.alphaMultiplier * this._globalAlpha
+      this._renderDisplay.alpha = alpha
+      if (
+        this._renderDisplay instanceof PIXI.Sprite ||
+        this._renderDisplay instanceof PIXI.SimpleMesh
+      ) {
+        var color =
+          (Math.round(this._colorTransform.redMultiplier * 0xff) << 16) +
+          (Math.round(this._colorTransform.greenMultiplier * 0xff) << 8) +
+          Math.round(this._colorTransform.blueMultiplier * 0xff)
+        this._renderDisplay.tint = color
+      }
+      // TODO child armature.
+    }
+    PixiSlot.prototype._updateFrame = function () {
+      var currentTextureData = this._textureData
+      if (
+        this._displayIndex >= 0 &&
+        this._display !== null &&
+        currentTextureData !== null
+      ) {
+        var currentTextureAtlasData = currentTextureData.parent
+        if (this._armature.replacedTexture !== null) {
+          // Update replaced texture atlas.
+          if (this._armature._replaceTextureAtlasData === null) {
+            currentTextureAtlasData = dragonBones.BaseObject.borrowObject(
+              dragonBones.PixiTextureAtlasData
+            )
+            currentTextureAtlasData.copyFrom(currentTextureData.parent)
+            currentTextureAtlasData.renderTexture = this._armature.replacedTexture
+            this._armature._replaceTextureAtlasData = currentTextureAtlasData
+          } else {
+            currentTextureAtlasData = this._armature._replaceTextureAtlasData
+          }
+          currentTextureData = currentTextureAtlasData.getTexture(
+            currentTextureData.name
+          )
+        }
+        var renderTexture = currentTextureData.renderTexture
+        if (renderTexture !== null) {
+          if (this._geometryData !== null) {
+            // Mesh.
+            var data = this._geometryData.data
+            var intArray = data.intArray
+            var floatArray = data.floatArray
+            var vertexCount =
+              intArray[this._geometryData.offset + 0 /* GeometryVertexCount */]
+            var triangleCount =
+              intArray[
+                this._geometryData.offset + 1 /* GeometryTriangleCount */
+              ]
+            var vertexOffset =
+              intArray[this._geometryData.offset + 2 /* GeometryFloatOffset */]
+            if (vertexOffset < 0) {
+              vertexOffset += 65536 // Fixed out of bouds bug.
+            }
+            var uvOffset = vertexOffset + vertexCount * 2
+            var scale = this._armature._armatureData.scale
+            var meshDisplay = this._renderDisplay
+            var vertices = new Float32Array(vertexCount * 2)
+            var uvs = new Float32Array(vertexCount * 2)
+            var indices = new Uint16Array(triangleCount * 3)
+            for (var i = 0, l = vertexCount * 2; i < l; ++i) {
+              vertices[i] = floatArray[vertexOffset + i] * scale
+            }
+            for (var i = 0; i < triangleCount * 3; ++i) {
+              indices[i] =
+                intArray[
+                  this._geometryData.offset + 4 /* GeometryVertexIndices */ + i
+                ]
+            }
+            for (var i = 0, l = vertexCount * 2; i < l; i += 2) {
+              var u = floatArray[uvOffset + i]
+              var v = floatArray[uvOffset + i + 1]
+              if (currentTextureData.rotated) {
+                uvs[i] = 1 - v
+                uvs[i + 1] = u
+              } else {
+                uvs[i] = u
+                uvs[i + 1] = v
+              }
+            }
+            this._textureScale = 1.0
+            meshDisplay.texture = renderTexture
+            meshDisplay.vertices = vertices
+            meshDisplay.uvBuffer.update(uvs)
+            meshDisplay.geometry.addIndex(indices)
+            var isSkinned = this._geometryData.weight !== null
+            var isSurface = this._parent._boneData.type !== 0 /* Bone */
+            if (isSkinned || isSurface) {
+              this._identityTransform()
+            }
+          } else {
+            // Normal texture.
+            this._textureScale =
+              currentTextureData.parent.scale *
+              this._armature._armatureData.scale
+            var normalDisplay = this._renderDisplay
+            normalDisplay.texture = renderTexture
+          }
+          this._visibleDirty = true
+          return
+        }
+      }
+      if (this._geometryData !== null) {
+        var meshDisplay = this._renderDisplay
+        meshDisplay.texture = null
+        meshDisplay.x = 0.0
+        meshDisplay.y = 0.0
+        meshDisplay.visible = false
+      } else {
+        var normalDisplay = this._renderDisplay
+        normalDisplay.texture = null
+        normalDisplay.x = 0.0
+        normalDisplay.y = 0.0
+        normalDisplay.visible = false
+      }
+    }
+    PixiSlot.prototype._updateMesh = function () {
+      var scale = this._armature._armatureData.scale
+      var deformVertices = this._displayFrame.deformVertices
+      var bones = this._geometryBones
+      var geometryData = this._geometryData
+      var weightData = geometryData.weight
+      var hasDeform = deformVertices.length > 0 && geometryData.inheritDeform
+      var meshDisplay = this._renderDisplay
+      if (weightData !== null) {
+        var data = geometryData.data
+        var intArray = data.intArray
+        var floatArray = data.floatArray
+        var vertexCount =
+          intArray[geometryData.offset + 0 /* GeometryVertexCount */]
+        var weightFloatOffset =
+          intArray[weightData.offset + 1 /* WeigthFloatOffset */]
+        if (weightFloatOffset < 0) {
+          weightFloatOffset += 65536 // Fixed out of bouds bug.
+        }
+        for (
+          var i = 0,
+            iD = 0,
+            iB = weightData.offset + 2 /* WeigthBoneIndices */ + bones.length,
+            iV = weightFloatOffset,
+            iF = 0;
+          i < vertexCount;
+          ++i
+        ) {
+          var boneCount = intArray[iB++]
+          var xG = 0.0,
+            yG = 0.0
+          for (var j = 0; j < boneCount; ++j) {
+            var boneIndex = intArray[iB++]
+            var bone = bones[boneIndex]
+            if (bone !== null) {
+              var matrix = bone.globalTransformMatrix
+              var weight = floatArray[iV++]
+              var xL = floatArray[iV++] * scale
+              var yL = floatArray[iV++] * scale
+              if (hasDeform) {
+                xL += deformVertices[iF++]
+                yL += deformVertices[iF++]
+              }
+              xG += (matrix.a * xL + matrix.c * yL + matrix.tx) * weight
+              yG += (matrix.b * xL + matrix.d * yL + matrix.ty) * weight
+            }
+          }
+          meshDisplay.vertices[iD++] = xG
+          meshDisplay.vertices[iD++] = yG
+        }
+      } else {
+        var isSurface = this._parent._boneData.type !== 0 /* Bone */
+        var data = geometryData.data
+        var intArray = data.intArray
+        var floatArray = data.floatArray
+        var vertexCount =
+          intArray[geometryData.offset + 0 /* GeometryVertexCount */]
+        var vertexOffset =
+          intArray[geometryData.offset + 2 /* GeometryFloatOffset */]
+        if (vertexOffset < 0) {
+          vertexOffset += 65536 // Fixed out of bouds bug.
+        }
+        for (var i = 0, l = vertexCount * 2; i < l; i += 2) {
+          var x = floatArray[vertexOffset + i] * scale
+          var y = floatArray[vertexOffset + i + 1] * scale
+          if (hasDeform) {
+            x += deformVertices[i]
+            y += deformVertices[i + 1]
+          }
+          if (isSurface) {
+            var matrix = this._parent._getGlobalTransformMatrix(x, y)
+            meshDisplay.vertices[i] = matrix.a * x + matrix.c * y + matrix.tx
+            meshDisplay.vertices[i + 1] =
+              matrix.b * x + matrix.d * y + matrix.ty
+          } else {
+            meshDisplay.vertices[i] = x
+            meshDisplay.vertices[i + 1] = y
+          }
+        }
+      }
+    }
+    PixiSlot.prototype._updateTransform = function () {
+      throw new Error()
+    }
+    PixiSlot.prototype._updateTransformV3 = function () {
+      this.updateGlobalTransform() // Update transform.
+      var transform = this.global
+      if (
+        this._renderDisplay === this._rawDisplay ||
+        this._renderDisplay === this._meshDisplay
+      ) {
+        var x =
+          transform.x -
+          (this.globalTransformMatrix.a * this._pivotX +
+            this.globalTransformMatrix.c * this._pivotY)
+        var y =
+          transform.y -
+          (this.globalTransformMatrix.b * this._pivotX +
+            this.globalTransformMatrix.d * this._pivotY)
+        this._renderDisplay.setTransform(
+          x,
+          y,
+          transform.scaleX * this._textureScale,
+          transform.scaleY * this._textureScale,
+          transform.rotation,
+          transform.skew,
+          0.0
+        )
+      } else {
+        this._renderDisplay.position.set(transform.x, transform.y)
+        this._renderDisplay.rotation = transform.rotation
+        this._renderDisplay.skew.set(transform.skew, 0.0)
+        this._renderDisplay.scale.set(transform.scaleX, transform.scaleY)
+      }
+    }
+    PixiSlot.prototype._updateTransformV4 = function () {
+      this.updateGlobalTransform() // Update transform.
+      var transform = this.global
+      if (
+        this._renderDisplay === this._rawDisplay ||
+        this._renderDisplay === this._meshDisplay
+      ) {
+        var x =
+          transform.x -
+          (this.globalTransformMatrix.a * this._pivotX +
+            this.globalTransformMatrix.c * this._pivotY)
+        var y =
+          transform.y -
+          (this.globalTransformMatrix.b * this._pivotX +
+            this.globalTransformMatrix.d * this._pivotY)
+        this._renderDisplay.setTransform(
+          x,
+          y,
+          transform.scaleX * this._textureScale,
+          transform.scaleY * this._textureScale,
+          transform.rotation,
+          -transform.skew,
+          0.0
+        )
+      } else {
+        this._renderDisplay.position.set(transform.x, transform.y)
+        this._renderDisplay.rotation = transform.rotation
+        this._renderDisplay.skew.set(-transform.skew, 0.0)
+        this._renderDisplay.scale.set(transform.scaleX, transform.scaleY)
+      }
+    }
+    PixiSlot.prototype._identityTransform = function () {
+      this._renderDisplay.setTransform(0.0, 0.0, 1.0, 1.0, 0.0, 0.0, 0.0)
+    }
+    return PixiSlot
+  })(dragonBones.Slot)
+  dragonBones.PixiSlot = PixiSlot
+})(dragonBones || (dragonBones = {}))
+/**
+ * The MIT License (MIT)
+ *
+ * Copyright (c) 2012-2018 DragonBones team and other contributors
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+var dragonBones
+;(function (dragonBones) {
+  /**
+   * - The PixiJS factory.
+   * @version DragonBones 3.0
+   * @language en_US
+   */
+  /**
+   * - PixiJS 工厂。
+   * @version DragonBones 3.0
+   * @language zh_CN
+   */
+  var PixiFactory = /** @class */ (function (_super) {
+    __extends(PixiFactory, _super)
+    /**
+     * @inheritDoc
+     */
+    function PixiFactory(dataParser, useSharedTicker) {
+      if (dataParser === void 0) {
+        dataParser = null
+      }
+      if (useSharedTicker === void 0) {
+        useSharedTicker = true
+      }
+      var _this = _super.call(this, dataParser) || this
+      if (PixiFactory._dragonBonesInstance === null) {
+        var eventManager = new dragonBones.PixiArmatureDisplay(
+          PIXI.Texture.EMPTY
+        )
+        PixiFactory._dragonBonesInstance = new dragonBones.DragonBones(
+          eventManager
+        )
+        if (useSharedTicker) {
+          PIXI.Ticker.shared.add(PixiFactory._clockHandler, PixiFactory)
+        }
+      }
+      _this._dragonBones = PixiFactory._dragonBonesInstance
+      return _this
+    }
+    PixiFactory._clockHandler = function (passedTime) {
+      this._dragonBonesInstance.advanceTime(
+        (passedTime / PIXI.settings.TARGET_FPMS) * 0.001
+      )
+    }
+    /*
+     * `passedTime` is elapsed time, specified in seconds.
+     */
+    PixiFactory.advanceTime = function (passedTime) {
+      this._dragonBonesInstance.advanceTime(passedTime)
+    }
+    Object.defineProperty(PixiFactory, 'factory', {
+      /**
+       * - A global factory instance that can be used directly.
+       * @version DragonBones 4.7
+       * @language en_US
+       */
+      /**
+       * - 一个可以直接使用的全局工厂实例。
+       * @version DragonBones 4.7
+       * @language zh_CN
+       */
+      get: function () {
+        if (PixiFactory._factory === null) {
+          PixiFactory._factory = new PixiFactory(
+            null,
+            PixiFactory.useSharedTicker
+          )
+        }
+        return PixiFactory._factory
+      },
+      enumerable: true,
+      configurable: true,
+    })
+    /**
+     * - 一个获取全局工厂实例(单例)的方法, 和get factory相比, 优点是可以传参数。
+     * @version DragonBones 4.7
+     * @language zh_CN
+     */
+    PixiFactory.newInstance = function (useSharedTicker) {
+      if (useSharedTicker === void 0) {
+        useSharedTicker = true
+      }
+      if (PixiFactory._factory === null) {
+        PixiFactory._factory = new PixiFactory(null, useSharedTicker)
+      }
+      return PixiFactory._factory
+    }
+    PixiFactory.prototype._buildTextureAtlasData = function (
+      textureAtlasData,
+      textureAtlas
+    ) {
+      if (textureAtlasData) {
+        textureAtlasData.renderTexture = textureAtlas
+      } else {
+        textureAtlasData = dragonBones.BaseObject.borrowObject(
+          dragonBones.PixiTextureAtlasData
+        )
+      }
+      return textureAtlasData
+    }
+    PixiFactory.prototype._buildArmature = function (dataPackage) {
+      var armature = dragonBones.BaseObject.borrowObject(dragonBones.Armature)
+      var armatureDisplay = new dragonBones.PixiArmatureDisplay(
+        PIXI.Texture.EMPTY
+      )
+      armature.init(
+        dataPackage.armature,
+        armatureDisplay,
+        armatureDisplay,
+        this._dragonBones
+      )
+      return armature
+    }
+    PixiFactory.prototype._buildSlot = function (
+      _dataPackage,
+      slotData,
+      armature
+    ) {
+      var slot = dragonBones.BaseObject.borrowObject(dragonBones.PixiSlot)
+      slot.init(
+        slotData,
+        armature,
+        new PIXI.Sprite(PIXI.Texture.EMPTY),
+        new PIXI.SimpleMesh()
+      )
+      return slot
+    }
+    /**
+     * - Create a armature from cached DragonBonesData instances and TextureAtlasData instances, then use the {@link #clock} to update it.
+     * The difference is that the armature created by {@link #buildArmature} is not WorldClock instance update.
+     * @param armatureName - The armature data name.
+     * @param dragonBonesName - The cached name of the DragonBonesData instance. (If not set, all DragonBonesData instances are retrieved, and when multiple DragonBonesData instances contain a the same name armature data, it may not be possible to accurately create a specific armature)
+     * @param skinName - The skin name, you can set a different ArmatureData name to share it's skin data. (If not set, use the default skin data)
+     * @returns The armature display container.
+     * @see dragonBones.IArmatureProxy
+     * @see dragonBones.BaseFactory#buildArmature
+     * @version DragonBones 4.5
+     * @example
+     * <pre>
+     *     let armatureDisplay = factory.buildArmatureDisplay("armatureName", "dragonBonesName");
+     * </pre>
+     * @language en_US
+     */
+    /**
+     * - 通过缓存的 DragonBonesData 实例和 TextureAtlasData 实例创建一个骨架，并用 {@link #clock} 更新该骨架。
+     * 区别在于由 {@link #buildArmature} 创建的骨架没有 WorldClock 实例驱动。
+     * @param armatureName - 骨架数据名称。
+     * @param dragonBonesName - DragonBonesData 实例的缓存名称。 （如果未设置，将检索所有的 DragonBonesData 实例，当多个 DragonBonesData 实例中包含同名的骨架数据时，可能无法准确的创建出特定的骨架）
+     * @param skinName - 皮肤名称，可以设置一个其他骨架数据名称来共享其皮肤数据。 （如果未设置，则使用默认的皮肤数据）
+     * @returns 骨架的显示容器。
+     * @see dragonBones.IArmatureProxy
+     * @see dragonBones.BaseFactory#buildArmature
+     * @version DragonBones 4.5
+     * @example
+     * <pre>
+     *     let armatureDisplay = factory.buildArmatureDisplay("armatureName", "dragonBonesName");
+     * </pre>
+     * @language zh_CN
+     */
+    PixiFactory.prototype.buildArmatureDisplay = function (
+      armatureName,
+      dragonBonesName,
+      skinName,
+      textureAtlasName
+    ) {
+      if (dragonBonesName === void 0) {
+        dragonBonesName = ''
+      }
+      if (skinName === void 0) {
+        skinName = ''
+      }
+      if (textureAtlasName === void 0) {
+        textureAtlasName = ''
+      }
+      var armature = this.buildArmature(
+        armatureName,
+        dragonBonesName || '',
+        skinName || '',
+        textureAtlasName || ''
+      )
+      if (armature !== null) {
+        this._dragonBones.clock.add(armature)
+        return armature.display
+      }
+      return null
+    }
+    /**
+     * - Create the display object with the specified texture.
+     * @param textureName - The texture data name.
+     * @param textureAtlasName - The texture atlas data name (Of not set, all texture atlas data will be searched)
+     * @version DragonBones 3.0
+     * @language en_US
+     */
+    /**
+     * - 创建带有指定贴图的显示对象。
+     * @param textureName - 贴图数据名称。
+     * @param textureAtlasName - 贴图集数据名称。 （如果未设置，将检索所有的贴图集数据）
+     * @version DragonBones 3.0
+     * @language zh_CN
+     */
+    PixiFactory.prototype.getTextureDisplay = function (
+      textureName,
+      textureAtlasName
+    ) {
+      if (textureAtlasName === void 0) {
+        textureAtlasName = null
+      }
+      var textureData = this._getTextureData(
+        textureAtlasName !== null ? textureAtlasName : '',
+        textureName
+      )
+      if (textureData !== null && textureData.renderTexture !== null) {
+        return new PIXI.Sprite(textureData.renderTexture)
+      }
+      return null
+    }
+    Object.defineProperty(PixiFactory.prototype, 'soundEventManager', {
+      /**
+       * - A global sound event manager.
+       * Sound events can be listened to uniformly from the manager.
+       * @version DragonBones 4.5
+       * @language en_US
+       */
+      /**
+       * - 全局声音事件管理器。
+       * 声音事件可以从该管理器统一侦听。
+       * @version DragonBones 4.5
+       * @language zh_CN
+       */
+      get: function () {
+        return this._dragonBones.eventManager
+      },
+      enumerable: true,
+      configurable: true,
+    })
+    PixiFactory._dragonBonesInstance = null
+    PixiFactory._factory = null
+    /*
+     * whether use `PIXI.Ticker.shared`
+     */
+    PixiFactory.useSharedTicker = true
+    return PixiFactory
+  })(dragonBones.BaseFactory)
+  dragonBones.PixiFactory = PixiFactory
 })(dragonBones || (dragonBones = {}))

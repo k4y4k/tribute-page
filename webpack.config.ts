@@ -3,7 +3,7 @@ import * as webpack from 'webpack'
 
 const config: webpack.Configuration = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
-  entry: './src/ts/main.ts',
+  entry: './src/ts/index.ts',
   module: {
     rules: [
       {
@@ -16,6 +16,11 @@ const config: webpack.Configuration = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      PIXI: 'pixi.js', // makes dragonbones work
+    }),
+  ],
 
   output: {
     path: path.resolve(__dirname, 'dist/js/'),
