@@ -14,7 +14,8 @@ html(lang="en-AU")
         h1.nogap The Postmasters
         h2.nogap A Short Guide for the Uninitiated
       //- this "extra" div is here for sticky purposes
-      #pixi-container
+      div
+        canvas(height="512")#riveCanvas
       //- #img-div
         img#image(srcset="img/header.webp, img/header.png" src="img/header.png" alt="An illustration of two figures.")
         figcaption#img-caption Left: Cecillian Whyttaker-Myne; Right: Alessander Tel
@@ -32,6 +33,7 @@ html(lang="en-AU")
     footer
       //- p
         small JSYK, #[a#tribute-link(href="https://en.wikipedia.org/wiki/Creative_writing" target="_blank") this is a work of fiction.] Names, characters, places, and events are the product of my imagination. Any resemblance to actual persons, living or dead, or actual events is purely coincidental.
-      script(type="text/javascript" src="js/main.bundle.js")
+      script(type="text/javascript" src="https://unpkg.com/rive-canvas@0.6.7/rive.js")
+      script(type="text/javascript" src="js/index.js")
       //- script(type='text/javascript' src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js")
 

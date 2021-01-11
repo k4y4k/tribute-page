@@ -42,6 +42,10 @@ function img(done: Function): any {
     )
     .pipe(gulp.dest('./dist/img/'))
 
+  // .riv for Rive
+  // seperate pass because it's a straight copy/paste job
+  gulp.src('./src/img/*.riv').pipe(gulp.dest('./dist/img/'))
+
   done()
 }
 
