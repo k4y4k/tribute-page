@@ -7,10 +7,7 @@ const responsive = require('gulp-responsive')
 const ts = require('gulp-typescript')
 
 function pug(done: Function): any {
-  gulp
-    .src('./src/pug/*.pug')
-    .pipe(gulpPug({verbose: true}))
-    .pipe(gulp.dest('./dist'))
+  gulp.src('./src/pug/*.pug').pipe(gulpPug()).pipe(gulp.dest('./dist'))
 
   done()
 }
@@ -31,12 +28,56 @@ function processCss(done: Function): any {
 
 function img(done: Function): any {
   gulp
-    .src('./src/img/*.{png,jpg}')
+    .src('./src/img/*.png')
     .pipe(
       responsive({
         'header.png': [
-          {format: 'webp', height: 750},
-          {format: 'png', height: 750},
+          {
+            format: 'webp',
+            height: 500,
+            trim: 10,
+            quality: 95,
+            rename: 'header-sm.webp',
+          },
+          {
+            format: 'png',
+            height: 500,
+            trim: 10,
+            quality: 95,
+            rename: 'header-sm.png',
+          },
+
+          {
+            format: 'webp',
+            height: 750,
+            trim: 10,
+            quality: 95,
+            rename: 'header-md.webp',
+          },
+          {
+            format: 'png',
+            height: 750,
+            trim: 10,
+            quality: 95,
+            rename: 'header-md.png',
+          },
+
+          {
+            format: 'webp',
+            height: 1000,
+            trim: 10,
+            quality: 95,
+            rename: 'header-lg.webp',
+          },
+          {
+            format: 'png',
+            height: 1000,
+            trim: 10,
+            quality: 95,
+            rename: 'header-lg.png',
+          },
+          {format: 'webp', trim: 10, quality: 95, rename: 'header-xl.webp'},
+          {format: 'png', trim: 10, quality: 95, rename: 'header-xl.png'},
         ],
       })
     )
@@ -60,5 +101,7 @@ function meta(done: Function): any {
 
   done()
 }
+
+console.log(img, js, meta, processCss)
 
 exports.build = gulp.series(meta, pug, processCss, img, js)
