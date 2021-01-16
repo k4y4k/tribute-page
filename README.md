@@ -1,6 +1,5 @@
 # The Postmasters: A Short Guide for the Uninitiated
 
-![Travis (.com)](https://img.shields.io/travis/com/k4y4k/tribute-page?logo=travis&logoColor=white&style=for-the-badge)
 ![uses typescript](https://img.shields.io/static/v1?label=uses&message=typescript&color=blue&logo=typescript&logoColor=white&style=for-the-badge)
 ![uses gulp](https://img.shields.io/static/v1?label=uses&message=gulp&color=blue&logo=gulp&logoColor=white&style=for-the-badge)
 ![uses postCSS](https://img.shields.io/static/v1?label=uses&message=postCSS&color=blue&logo=postCSS&logoColor=white&style=for-the-badge)
