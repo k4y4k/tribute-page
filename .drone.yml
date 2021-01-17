@@ -10,14 +10,26 @@ workspace:
   path: /drone/src/
 
 steps:
-  - name: build
+  - name: install
     image: node:14
     pull: if-not-exists
     commands:
-      - yarn --cwd . --emoji true --pure-lockfile
-        # ...where tf are we
-      - echo $PWD
-      - ls
+      - npm i -g gulp
+      - yarn --pure-lockfile
+    environment:
+      NODE_ENV: production
+
+  - name: build
+    image: node:14
+    commands:
+      - gulp build
       - yarn build
     environment:
       NODE_ENV: production
+
+
+
+
+
+
+
