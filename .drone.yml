@@ -13,6 +13,6 @@ steps:
     commands:
       - yarn
       - ls
-      - yarn gulp build
+      - yarn build
     environment:
       NODE_ENV: production
