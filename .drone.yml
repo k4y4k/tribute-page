@@ -7,16 +7,16 @@ clone:
   depth: 2
 
 workspace:
-  path: /drone/src
+  path: /drone/src/
 
 steps:
   - name: build
-    image: node
+    image: node:14
     pull: if-not-exists
     commands:
       - yarn --cwd . --emoji true --pure-lockfile
       - ls
-      - ls node_modules/
+        # - ls node_modules/
       - yarn build
     environment:
       NODE_ENV: production
