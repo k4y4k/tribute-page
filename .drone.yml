@@ -7,11 +7,11 @@ clone:
   depth: 2
 
 steps:
-  - name: pre & build
+  - name: build
     image: node
     pull: if-not-exists
     commands:
-      - yarn
+      - yarn --cwd . --emoji true --pure-lockfile
       - ls
       - yarn build
     environment:
