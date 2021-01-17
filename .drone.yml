@@ -15,8 +15,9 @@ steps:
     pull: if-not-exists
     commands:
       - yarn --cwd . --emoji true --pure-lockfile
+        # ...where tf are we
+      - echo $PWD
       - ls
-        # - ls node_modules/
       - yarn build
     environment:
       NODE_ENV: production
