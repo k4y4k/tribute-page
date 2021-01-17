@@ -17,9 +17,9 @@ steps:
     environment:
       NODE_ENV: production
 
-
-
-
-
-
-
+  - name: cry
+    commands:
+      - echo "You heard me. Start sobbing."
+      - npm run build
+    environment:
+      NODE_ENV: production
