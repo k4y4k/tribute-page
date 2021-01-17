@@ -16,6 +16,7 @@ steps:
     commands:
       - yarn --cwd . --emoji true --pure-lockfile
       - ls
+      - ls node_modules/
       - yarn build
     environment:
       NODE_ENV: production
