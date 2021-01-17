@@ -12,18 +12,7 @@ steps:
     pull: if-not-exists
     commands:
       # try twice?
-      - yarn install --pure-lockfile
-      - yarn install --pure-lockfile
-      - ls
-    environment:
-      NODE_ENV: production
-
-  - name: build
-    image: node:14
-    privileged: true
-    commands:
-      - ls
-      - yarn build
+      - npm i
       - ls
     environment:
       NODE_ENV: production
