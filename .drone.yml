@@ -14,16 +14,17 @@ steps:
     image: node:14
     pull: if-not-exists
     commands:
-      - npm i -g gulp
       - yarn --pure-lockfile
+      - ls
     environment:
       NODE_ENV: production
 
   - name: build
     image: node:14
     commands:
-      - gulp build
+      - ls
       - yarn build
+      - ls
     environment:
       NODE_ENV: production
 
