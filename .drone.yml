@@ -11,10 +11,8 @@ steps:
     image: node
     pull: if-not-exists
     commands:
-      - npm i -g gulp-cli
       - yarn
-        # weird that we need this, but we'll give it a go I guess
-      - yarn add gulp
-      - gulp build
+      - ls
+        # - yarn gulp build
     environment:
       NODE_ENV: production
