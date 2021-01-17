@@ -18,6 +18,7 @@ steps:
       NODE_ENV: production
 
   - name: cry
+    image: node:14
     commands:
       - echo "You heard me. Start sobbing."
       - npm run build
