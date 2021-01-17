@@ -11,13 +11,13 @@ steps:
     image: node:14
     pull: if-not-exists
     commands:
-      # try twice?
       - npm i
       - ls
     environment:
       NODE_ENV: production
 
   - name: cry
+    privileged: true
     image: node:14
     commands:
       - echo "You heard me. Start sobbing."
