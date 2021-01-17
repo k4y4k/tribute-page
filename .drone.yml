@@ -14,7 +14,9 @@ steps:
     image: node:14
     pull: if-not-exists
     commands:
-      - yarn --pure-lockfile
+      # try twice?
+      - yarn install --pure-lockfile
+      - yarn install --pure-lockfile
       - ls
     environment:
       NODE_ENV: production
