@@ -6,9 +6,6 @@ name: default
 clone:
   depth: 2
 
-workspace:
-  path: /drone/src/
-
 steps:
   - name: install
     image: node:14
