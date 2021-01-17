@@ -9,6 +9,9 @@ clone:
 steps:
   - name: install
     image: node:14
+    volumes:
+      - name: nodemod
+        path: /node_modules
     pull: if-not-exists
     commands:
       - npm i
@@ -19,8 +22,15 @@ steps:
   - name: cry
     privileged: true
     image: node:14
+    volumes:
+      - name: nodemod
+        path: /node_modules
     commands:
       - echo "You heard me. Start sobbing."
       - npm run build
     environment:
       NODE_ENV: production
+
+volumes:
+  - name: nodemod
+    temp: {}
