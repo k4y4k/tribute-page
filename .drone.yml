@@ -20,6 +20,7 @@ steps:
 
   - name: build
     image: node:14
+    privileged: true
     commands:
       - ls
       - yarn build
