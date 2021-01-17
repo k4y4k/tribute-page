@@ -9,8 +9,10 @@ clone:
 steps:
   - name: pre & build
     image: node
+    pull: if-not-exists
     commands:
       - npm i -g gulp-cli
+      - yarn
       - gulp build
     environment:
       NODE_ENV: production
