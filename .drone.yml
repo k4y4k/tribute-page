@@ -35,6 +35,9 @@ steps:
     when:
       branch:
         - main
+      event:
+        exclude:
+          - pull-request
 
 volumes:
   - name: nodemod
