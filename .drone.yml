@@ -27,10 +27,10 @@ steps:
   - name: publish
     image: plugins/gh-pages
     settings:
+      pages_directory: dist/
       username: k4y4k
       password:
         from_secret: github_token
-    pages_directory: dist/
     when:
       branch:
         - main
