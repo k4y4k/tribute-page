@@ -28,9 +28,10 @@ steps:
     image: plugins/gh-pages
     settings:
       pages_directory: dist/
-      username: k4y4k
-      password:
+      username:
         from_secret: github_token
+        # drone-plugins/drone-gh-pages#16
+      password: x-oauth-basic
     when:
       branch:
         - main
