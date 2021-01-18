@@ -14,18 +14,26 @@ steps:
         path: /node_modules
     pull: if-not-exists
     commands:
-      - npm i
-      - ls
+      - yarn
 
-  - name: cry
-    privileged: true
+  - name: build
     image: node:14
     volumes:
       - name: nodemod
         path: /node_modules
     commands:
-      - echo "You heard me. Start sobbing."
-      - npm run build
+      - yarn run build
+
+  - name: publish
+    image: plugins/gh-pages
+    settings:
+      username: k4y4k
+      password:
+        from_secret: github_token
+    pages_directory: dist/
+    when:
+      branch:
+        - main
 
 volumes:
   - name: nodemod
