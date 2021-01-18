@@ -16,8 +16,6 @@ steps:
     commands:
       - npm i
       - ls
-    environment:
-      NODE_ENV: production
 
   - name: cry
     privileged: true
@@ -28,8 +26,6 @@ steps:
     commands:
       - echo "You heard me. Start sobbing."
       - npm run build
-    environment:
-      NODE_ENV: production
 
 volumes:
   - name: nodemod
