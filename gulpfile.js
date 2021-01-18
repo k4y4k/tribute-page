@@ -2,7 +2,6 @@ const gulp = require('gulp')
 const gulpPug = require('gulp-pug')
 const postcss = require('gulp-postcss')
 const responsive = require('gulp-responsive')
-const ts = require('gulp-typescript')
 
 function pug(done) {
   gulp.src('./src/pug/*.pug').pipe(gulpPug()).pipe(gulp.dest('./dist'))
