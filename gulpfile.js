@@ -1,18 +1,15 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call,@typescript-eslint/no-unsafe-member-access,@typescript-eslint/no-unsafe-assignment */
-
-import gulp from 'gulp'
+const gulp = require('gulp')
 const gulpPug = require('gulp-pug')
 const postcss = require('gulp-postcss')
 const responsive = require('gulp-responsive')
-const ts = require('gulp-typescript')
 
-function pug(done: Function): any {
+function pug(done) {
   gulp.src('./src/pug/*.pug').pipe(gulpPug()).pipe(gulp.dest('./dist'))
 
   done()
 }
 
-function processCss(done: Function): any {
+function processCss(done) {
   const plugins = [
     require('postcss-partial-import'),
     require('postcss-uncss')({html: ['./dist/index.html']}),
@@ -26,7 +23,7 @@ function processCss(done: Function): any {
   done()
 }
 
-function img(done: Function): any {
+function img(done) {
   gulp
     .src('./src/img/*.png')
     .pipe(
@@ -86,22 +83,10 @@ function img(done: Function): any {
   done()
 }
 
-function js(done: Function): any {
-  gulp
-    .src('./src/ts/*.ts')
-    .pipe(ts({noImplicitAny: true, outFile: 'main.js'}))
-    .pipe(require('gulp-minify')({noSource: true}))
-    .pipe(gulp.dest('./dist/js/'))
-
-  done()
-}
-
-function meta(done: Function): any {
+function meta(done) {
   gulp.src('./src/meta/*').pipe(gulp.dest('./dist'))
 
   done()
 }
 
-console.log(img, js, meta, processCss)
-
-exports.build = gulp.series(meta, pug, processCss, img, js)
+exports.build = gulp.series(meta, pug, processCss, img)

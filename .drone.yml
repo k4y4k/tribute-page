@@ -1,0 +1,40 @@
+---
+kind: pipeline
+type: docker
+name: default
+
+clone:
+  depth: 2
+
+steps:
+  - name: install
+    image: node:14
+    volumes:
+      - name: nodemod
+        path: /node_modules
+    pull: if-not-exists
+    commands:
+      - yarn
+
+  - name: build
+    image: node:14
+    volumes:
+      - name: nodemod
+        path: /node_modules
+    commands:
+      - yarn run build
+
+  - name: publish
+    image: plugins/gh-pages
+    settings:
+      username: k4y4k
+      password:
+        from_secret: github_token
+    pages_directory: dist/
+    when:
+      branch:
+        - main
+
+volumes:
+  - name: nodemod
+    temp: {}
