@@ -25,6 +25,7 @@ steps:
       - yarn run build
 
   - name: publish
+    failure: ignore
     image: plugins/gh-pages
     settings:
       pages_directory: dist/
