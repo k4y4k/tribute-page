@@ -5,5 +5,22 @@
   "prCreation": "not-pending",
   "labels": ["type: dependencies"],
   "dependencyDashboard": true,
-  "dependencyDashboardAutoclose": true
+  "dependencyDashboardAutoclose": true,
+  "dependencyDashboardFooter": "And so it was written:\n  \"Oho!\" said the Postmaster.",
+
+  "commitMessagePrefix": "⬆️",
+  "commitMessageAction": "Update",
+  "major": {"automerge": false},
+  "packageRules": [
+    {
+      "matchUpdateTypes": "pin",
+      "commitMessagePrefix": "📌",
+      "commitMessageAction": "Pin"
+    },
+    {
+      "matchUpdateTypes": "rollback",
+      "commitMessagePrefix": "⬇️",
+      "commitMessageAction": "Downgrade"
+    }
+  ]
 }

@@ -20,16 +20,12 @@
     "prettier": "2.2.1",
     "uncss": "0.17.3"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{js,css,md}": "prettier --write"
   },
   "scripts": {
-    "build": "gulp build"
+    "build": "gulp build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "autoprefixer": "10.2.5",
