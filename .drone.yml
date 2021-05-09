@@ -8,7 +8,7 @@ clone:
 
 steps:
   - name: install
-    image: node:14
+    image: node:16
     volumes:
       - name: nodemod
         path: /node_modules
@@ -17,7 +17,7 @@ steps:
       - yarn
 
   - name: build
-    image: node:14
+    image: node:16
     volumes:
       - name: nodemod
         path: /node_modules
