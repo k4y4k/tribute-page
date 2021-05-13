@@ -15,7 +15,7 @@
     "gulp-responsive": "3.0.1",
     "husky": "6.0.0",
     "lint-staged": "11.0.0",
-    "postcss": "8.2.14",
+    "postcss": "8.2.15",
     "postcss-uncss": "0.17.0",
     "prettier": "2.3.0",
     "uncss": "0.17.3"
