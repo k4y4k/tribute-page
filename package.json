@@ -9,7 +9,7 @@
   "private": true,
   "type": "commonjs",
   "devDependencies": {
-    "cssnano-preset-advanced": "5.0.1",
+    "cssnano-preset-advanced": "5.1.1",
     "gulp-minify": "3.1.0",
     "gulp-postcss": "9.0.0",
     "gulp-responsive": "3.0.1",
