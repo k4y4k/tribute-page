@@ -13,7 +13,7 @@
     "gulp-minify": "3.1.0",
     "gulp-postcss": "9.0.0",
     "gulp-responsive": "3.0.1",
-    "husky": "7.0.0",
+    "husky": "7.0.1",
     "lint-staged": "11.0.0",
     "postcss": "8.3.5",
     "postcss-uncss": "0.17.0",
